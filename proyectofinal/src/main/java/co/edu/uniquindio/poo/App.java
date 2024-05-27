@@ -9,16 +9,21 @@ public class App {
 
     public static void main(String[] args) {
         String nombreParqueadero = JOptionPane.showInputDialog("Ingrese el nombre del Parqueadero:");
+
         int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de filas del parqueadero:"));
         int columnas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de columnas del parqueadero:"));
+        System.out.println("ingrese el nombre y documento del administrador");
+        String nombre=scanner.nextLine();
+        String documento=scanner.nextLine();
 
         Parqueadero parqueadero = new Parqueadero(nombreParqueadero, filas, columnas);
+        Administrador admi= new Administrador(nombre,documento );
 
         int opcion = 0;
         while (opcion != 8) {
             System.out.println(
                     "Bienvenido al parqueadero " + nombreParqueadero + "\nPor favor seleccione la opción que deseé");
-            System.out.println("1-Configurar tarifas");
+            System.out.println("1-Configurar tarifas administrador");
             System.out.println("2-Ingresar un nuevo vehiculo");
             System.out.println("3-Mostrar todos los vehiculos del parqueadero");
             System.out.println("4-Mostrar estado actual del parqueadero");
@@ -29,7 +34,7 @@ public class App {
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
-                    parqueadero.configurarTarifas();
+                    admi.configurarTarifas();
                     break;
                 case 2:
                     Vehiculo.agregarVehiculo(parqueadero);
@@ -44,7 +49,7 @@ public class App {
                     parqueadero.eliminarVehiculo();
                     break;
                 case 6:
-                    parqueadero.calcularTotalPagar();
+                    parqueadero.calcularTotalPagar(admi);
                     break;
                 case 7:
                     parqueadero.generarReporte();
