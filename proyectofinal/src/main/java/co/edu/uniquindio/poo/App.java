@@ -9,6 +9,7 @@ public class App {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        
         String nombreParqueadero = JOptionPane.showInputDialog("Ingrese el nombre del Parqueadero:");
 
         int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de filas del parqueadero:"));
@@ -16,24 +17,15 @@ public class App {
         System.out.println("ingrese el nombre y documento del administrador");
         String nombre=scanner.nextLine();
         String documento=scanner.nextLine();
-
+        
         Parqueadero parqueadero = new Parqueadero(nombreParqueadero, filas, columnas);
         Administrador admi= new Administrador(nombre,documento );
-
         int opcion = 0;
         while (opcion != 8) {
-            System.out.println(
-                    "Bienvenido al parqueadero " + nombreParqueadero + "\nPor favor seleccione la opción que deseé");
-            System.out.println("1-Configurar tarifas administrador");
-            System.out.println("2-Ingresar un nuevo vehiculo");
-            System.out.println("3-Mostrar todos los vehiculos del parqueadero");
-            System.out.println("4-Mostrar estado actual del parqueadero");
-            System.out.println("5-Eliminar un vehiculo");
-            System.out.println("6-Tarifas");
-            System.out.println("7-Calcular total a pagar por vehiculo");
-            System.out.println("8-Generar reporte ganancias");
-            System.out.println("9-Cerrar parqueadero");
-            opcion = scanner.nextInt();
+            String m2="bienvenido a "+nombreParqueadero+" parqueadero";
+            JOptionPane.showMessageDialog(null, m2);
+            String mensaje="Menú\n seleccione una opcion\n 1-Configurar tarifas administrador\n 2-Ingresar un nuevo vehiculo\n 3-Mostrar todos los vehiculos registrado\n 4-Mostrar estado actual del parqueadero\n 5-Eliminar un vehiculo \n 6-Tarifas\n 7-Calcular total a pagar por vehiculo\n 8-enerar reporte ganancias\n 9-Cerrar parqueadero";
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(mensaje));
             switch (opcion) {
                 case 1:
                     admi.configurarTarifas();

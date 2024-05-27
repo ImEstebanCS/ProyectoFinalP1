@@ -40,8 +40,10 @@ public class Parqueadero {
         if (i >= 0 && i < filas && j >= 0 && j < columnas) {
             if (puestos[i][j].ocupar(vehiculo)) {
                 vehiculo.setHoraIngreso(LocalDateTime.now()); // Establecer la hora de ingreso
-                System.out.println("Vehículo con placa " + vehiculo.getNumeroPlaca()
-                        + " ha sido colocado en el puesto [" + i + "][" + j + "]");
+                String m1=("Vehículo con placa " + vehiculo.getNumeroPlaca()
+                + " ha sido colocado en el puesto [" + i + "][" + j + "]");
+                System.out.println(m1);
+                JOptionPane.showMessageDialog(null, m1);
                 registroVehiculos.put(vehiculo.getNumeroPlaca(), vehiculo);
             } else {
                 System.out.println("El puesto [" + i + "][" + j + "] ya está ocupado.");
@@ -63,9 +65,11 @@ public class Parqueadero {
                 Puesto puesto = puestos[i][j];
                 if (puesto.ocupado()) {
                     Vehiculo vehiculo = puesto.getVehiculo();
-                    System.out.print("[" + vehiculo.getClass().getSimpleName().charAt(0) + "]");
+                    String m3="[" + vehiculo.getClass().getSimpleName().charAt(0) + "]";
+                    System.out.print(m3);
+                    JOptionPane.showMessageDialog(null,m3);
                 } else {
-                    System.out.print("[L]");
+                    JOptionPane.showMessageDialog(null,"[L]");
                 }
                 System.out.print("\t");
             }
