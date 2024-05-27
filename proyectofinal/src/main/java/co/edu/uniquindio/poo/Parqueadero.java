@@ -70,9 +70,7 @@ public class Parqueadero {
             double tarifa = tarifas.get(vehiculo.getClass().getSimpleName());
             Duration duracion = Duration.between(vehiculo.getHoraIngreso(), salida);
             long horas = duracion.toHours();
-            if (duracion.toMinutesPart() > 0) { // Cobrar hhora adicional
-                horas++;
-            }
+
             double totalPagar = horas * tarifa;
             totalDiario += totalPagar;
             totalMensual += totalPagar;
@@ -83,7 +81,12 @@ public class Parqueadero {
     }
 
     public void mostrarVehiculos() {
-        registroVehiculos.values().forEach(System.out::println);
+
+        StringBuilder vehiculosStr = new StringBuilder();
+        registroVehiculos.values().forEach(vehiculo -> vehiculosStr.append(vehiculo).append("\n"));
+
+        JOptionPane.showMessageDialog(null, vehiculosStr.toString(), nombreParqueadero,
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void estadoActual() {
