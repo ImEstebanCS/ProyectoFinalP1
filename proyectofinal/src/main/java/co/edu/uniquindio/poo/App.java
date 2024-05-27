@@ -13,6 +13,7 @@ public class App {
         int columnas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de columnas del parqueadero:"));
 
         Parqueadero parqueadero = new Parqueadero(nombreParqueadero, filas, columnas);
+        Parqueadero.estadoActual();
 
         int opcion = 0;
         while (opcion != 8) {

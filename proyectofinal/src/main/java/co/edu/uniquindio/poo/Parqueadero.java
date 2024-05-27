@@ -9,9 +9,9 @@ import javax.swing.JOptionPane;
 
 public class Parqueadero {
     private String nombreParqueadero;
-    private int filas;
-    private int columnas;
-    private Puesto[][] puestos;
+    private static int filas;
+    private static int columnas;
+    private static Puesto[][] puestos;
     private Map<String, Vehiculo> registroVehiculos;
     private Map<String, Double> tarifas;
     private double totalDiario;
@@ -86,20 +86,24 @@ public class Parqueadero {
         registroVehiculos.values().forEach(System.out::println);
     }
 
-    public void estadoActual() {
+    public static void estadoActual() {
+        StringBuilder estadoParqueadero = new StringBuilder();
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 Puesto puesto = puestos[i][j];
                 if (puesto.ocupado()) {
                     Vehiculo vehiculo = puesto.getVehiculo();
-                    System.out.print("[" + vehiculo.getClass().getSimpleName().charAt(0) + "]");
+                    estadoParqueadero.append("[").append(vehiculo.getClass().getSimpleName().charAt(0)).append("]");
                 } else {
-                    System.out.print("[L]");
+                    estadoParqueadero.append("[L]");
                 }
-                System.out.print("\t");
+                estadoParqueadero.append("\t");
             }
-            System.out.println();
+            estadoParqueadero.append("\n");
         }
+
+        JOptionPane.showMessageDialog(null, estadoParqueadero.toString(), "Matriz de Puestos",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void eliminarVehiculo() {
