@@ -20,6 +20,7 @@ public class App {
         String documento=scanner.nextLine();
         Administrador admi= new Administrador(nombre,documento );
         Parqueadero parqueadero = new Parqueadero(nombreParqueadero, filas, columnas);
+        parqueadero.estadoActual();
         String m2="bienvenido a "+nombreParqueadero+" parqueadero";
         JOptionPane.showMessageDialog(null, m2);
         int opcion = 0;
