@@ -9,7 +9,7 @@ import java.util.Scanner;
 *@Juan Carmona
  * Se usa la clase App para ser la que ejecute todo el codigo.
  */
-
+//--clase ventana donde se estaba creando la interfaz grafica pero por daños y errores se dejo a media--//
 public class Ventana extends JFrame {
     private static Scanner scanner = new Scanner(System.in);
     public ImageIcon icono;

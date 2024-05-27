@@ -9,7 +9,7 @@ public class Persona {
         this.documento = documento;
 
     }
-
+//--clase padre-- metodo tostring--//
     @Override
     public String toString() {
         return "Persona{" + "Nombre='" + nombre + '\'' + ", Documento=" + documento + '}';

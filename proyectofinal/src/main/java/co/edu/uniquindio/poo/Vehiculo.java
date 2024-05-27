@@ -36,7 +36,7 @@ public class Vehiculo {
         return "Vehiculo{" + "numeroPlaca='" + numeroPlaca + '\'' + ", modelo='" + modelo + '\'' + ", propietario="
                 + propietario + ", horaIngreso=" + horaIngreso + '}';
     }
-
+//--se agrega el vehiculo--//
     public static void agregarVehiculo(Parqueadero parqueadero) {
         String mensaje="Seleccione el tipo de vehiculo a agregar\n 1-carro\n 2-Moto\n 3-Moto Hibrida";
             int tipo=Integer.parseInt(JOptionPane.showInputDialog(mensaje));
@@ -48,7 +48,7 @@ public class Vehiculo {
             int posicioni = Integer.parseInt(JOptionPane.showInputDialog(m4));
             int posicionj = Integer.parseInt(JOptionPane.showInputDialog(m4));
       
-
+        //--case para seleccionar el tipo de vehiculo a guardar--//
         Vehiculo vehiculo = null;
         switch (tipo) {
             case 1:
@@ -71,7 +71,7 @@ public class Vehiculo {
                 System.out.println("Esta no es una opción valida.");
                 return;
         }
-
+        //se manda el vehiculo creado a ocupar puesto para cambiar el estado actual del parqueadero--//
         if (vehiculo != null) {
             parqueadero.ocuparPuesto(vehiculo, posicioni, posicionj);
         }

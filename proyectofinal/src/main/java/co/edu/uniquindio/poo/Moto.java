@@ -1,5 +1,5 @@
 package co.edu.uniquindio.poo;
-
+//--clase moto hereda de vehiculo--//
 public class Moto extends Vehiculo {
     private String velocidadMaxima;
 
