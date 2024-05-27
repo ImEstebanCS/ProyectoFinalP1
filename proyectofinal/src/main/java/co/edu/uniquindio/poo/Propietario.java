@@ -18,4 +18,19 @@ public class Propietario extends Persona {
         return new Propietario(nombre, documento);
     }
 
+    public Object getApellido() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getApellido'");
+    }
+
+    public Object getNombre() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getNombre'");
+    }
+
+    public Object getDocumento() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDocumento'");
+    }
+
 }
