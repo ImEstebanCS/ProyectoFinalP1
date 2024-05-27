@@ -1,8 +1,8 @@
 package co.edu.uniquindio.poo;
 
 public class Persona {
-    protected String nombre;
-    protected String documento;
+    protected static String nombre;
+    protected static String documento;
 
     public Persona(String nombre, String documento) {
         this.nombre = nombre;

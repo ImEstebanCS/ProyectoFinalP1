@@ -3,6 +3,8 @@ package co.edu.uniquindio.poo;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Vehiculo {
     private static Scanner scanner = new Scanner(System.in);
     private String numeroPlaca;
@@ -36,18 +38,16 @@ public class Vehiculo {
     }
 
     public static void agregarVehiculo(Parqueadero parqueadero) {
-        System.out.println("Seleccione el tipo de vehiculo que desea agregar");
-        System.out.println("1-Carro\n2-Motocicleta\n3-Motocicleta eléctrica");
-        int tipo = scanner.nextInt();
-        scanner.nextLine();
-        Propietario propietario = Propietario.crearPropietario();
-        System.out.println("Ingrese el numero de placa del Vehiculo:");
-        String numeroPlaca = scanner.nextLine();
-        System.out.println("Ingrese el modelo del Vehiculo:");
-        String modelo = scanner.nextLine();
-        System.out.println("Ingrese la posición donde desea guardar su vehiculo (i j):");
-        int posicioni = scanner.nextInt();
-        int posicionj = scanner.nextInt();
+        String mensaje="Seleccione el tipo de vehiculo a agregar\n 1-carro\n 2-Moto\n 3-Moto Hibrida";
+            int tipo=Integer.parseInt(JOptionPane.showInputDialog(mensaje));
+            Propietario propietario = Propietario.crearPropietario();
+            String numeroPlaca =JOptionPane.showInputDialog("Ingrese el numeroPlaca del Vehiculo;");
+            String modelo = JOptionPane.showInputDialog("ingrese el modelo del vehiculo");
+            String m4="Ingrese la posición donde desea guardar su vehiculo (i j):";
+            System.out.println("Ingrese la posición donde desea guardar su vehiculo (i j):");
+            int posicioni = Integer.parseInt(JOptionPane.showInputDialog(m4));
+            int posicionj = Integer.parseInt(JOptionPane.showInputDialog(m4));
+      
 
         Vehiculo vehiculo = null;
         switch (tipo) {
@@ -55,13 +55,16 @@ public class Vehiculo {
                 vehiculo = new Carro(numeroPlaca, modelo, propietario);
                 break;
             case 2:
-                System.out.println("Ingrese la velocidad maxima del Vehiculo:");
-                String velocidadMaxima = scanner.next();
+                String mensagMoto="ingrese la velocidad maxima de la moto";
+                String velocidadMaxima=JOptionPane.showInputDialog(mensagMoto);
+                String mensajeFmoto=JOptionPane.showInputDialog(null, "Vehiculo moto agregada correctamente\n 1-para volver a menu anterior");
+                System.out.println("Vehiculo agregado correctamente\n ");    
                 vehiculo = new Moto(numeroPlaca, modelo, propietario, velocidadMaxima);
                 break;
             case 3:
-                System.out.println("Ingrese la velocidad maxima del Vehiculo:");
-                String velocidadMaximaElectrica = scanner.next();
+                String mensagMotoE="ingrese la velocidad maxima de la moto Hibrida";
+                String velocidadMaximaElectrica=JOptionPane.showInputDialog(mensagMotoE);
+                String mensajeFmoto2=JOptionPane.showInputDialog(null, "Vehiculo moto electrica agregada correctamente\n 1-para volver a menu anterior");
                 vehiculo = new MotoHibrida(numeroPlaca, modelo, propietario, velocidadMaximaElectrica);
                 break;
             default:
