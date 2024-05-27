@@ -31,6 +31,9 @@ public class Administrador extends Persona {
         JOptionPane.showMessageDialog(null, "Tarifas configuradas correctamente.");
         return tarifas;
     }
+    public double getTarifa(Vehiculo vehiculo) {
+        return tarifas.getOrDefault(vehiculo, 0.0);
+    }
 
         public long get(String string) {
             // TODO Auto-generated method stub

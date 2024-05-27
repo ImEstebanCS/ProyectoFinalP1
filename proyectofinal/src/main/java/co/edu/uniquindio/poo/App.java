@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -34,7 +35,7 @@ public class App {
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
-                    admi.configurarTarifas();
+                    Map<String, Double> tarifa = admi.configurarTarifas();
                     break;
                 case 2:
                     Vehiculo.agregarVehiculo(parqueadero);
@@ -51,6 +52,7 @@ public class App {
                 case 6:
                     parqueadero.calcularTotalPagar(admi);
                     break;
+
                 case 7:
                     parqueadero.generarReporte();
                     break;
