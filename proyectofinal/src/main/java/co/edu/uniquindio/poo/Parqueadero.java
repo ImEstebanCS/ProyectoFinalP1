@@ -91,31 +91,6 @@ public class Parqueadero {
             System.out.println("Vehículo con placa " + placa + " no encontrado.");
         }
     }
-    
-    
-    public void calcularTotalPagar(Administrador tarifas) {
-        String placa = JOptionPane.showInputDialog("Ingrese la placa del vehiculo:");
-        //System.out.println("llega aca1");
-        Vehiculo vehiculo = registroVehiculos.get(placa);
-        if (vehiculo != null) {
-            LocalDateTime salida = LocalDateTime.now();
-            //System.out.println("llega aca2");
-            double tarifa = tarifas.get(vehiculo.getClass().getSimpleName());
-
-           // System.out.println("llega aca3");
-            Duration duracion = Duration.between(vehiculo.getHoraIngreso(), salida);
-            long horas = duracion.toHours();
-            if (duracion.toMinutesPart() > 0) { // Cobrar hora adicional 
-                horas++;
-            }
-            double totalPagar = horas * tarifa;
-            totalDiario += totalPagar;
-            totalMensual += totalPagar;
-            System.out.println("El total a pagar por el vehículo con placa " + placa + " es: " + totalPagar);
-        } else {
-            System.out.println("Vehículo con placa " + placa + " no encontrado.");
-        }
-    }
 
     public void generarReporte() {
         System.out.println("Reporte Diario:");
@@ -126,9 +101,6 @@ public class Parqueadero {
 
     }
 
-    public void calcularTotalPagar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcularTotalPagar'");
-    }
+   
 
 }

@@ -29,19 +29,20 @@ public class App {
             System.out.println("3-Mostrar todos los vehiculos del parqueadero");
             System.out.println("4-Mostrar estado actual del parqueadero");
             System.out.println("5-Eliminar un vehiculo");
-            System.out.println("6-Calcular total a pagar por vehiculo");
-            System.out.println("7-Generar reporte ganancias");
-            System.out.println("8-Cerrar parqueadero");
+            System.out.println("6-Tarifas");
+            System.out.println("7-Calcular total a pagar por vehiculo");
+            System.out.println("8-Generar reporte ganancias");
+            System.out.println("9-Cerrar parqueadero");
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
-                    Map<String, Double> tarifa = admi.configurarTarifas();
+                    admi.configurarTarifas();
                     break;
                 case 2:
                     Vehiculo.agregarVehiculo(parqueadero);
                     break;
                 case 3:
-                    parqueadero.mostrarVehiculos();
+                     parqueadero.mostrarVehiculos();
                     break;
                 case 4:
                     parqueadero.estadoActual();
@@ -50,13 +51,16 @@ public class App {
                     parqueadero.eliminarVehiculo();
                     break;
                 case 6:
-                    parqueadero.calcularTotalPagar(admi);
+                    admi.imprimirTarifas(admi);
                     break;
 
                 case 7:
+                    admi.calcularTotalPagar();
+                    break;
+                case 8: 
                     parqueadero.generarReporte();
                     break;
-                case 8:
+                case 9:
                     System.out.println("¡Hasta luego!");
                     break;
                 default:

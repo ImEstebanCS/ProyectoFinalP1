@@ -18,32 +18,52 @@ public class Administrador extends Persona {
          this.tarifas = new HashMap<>();
         
     }
-
-        public <tarifas> Map<String, Double>  configurarTarifas() {
-        double tarifaCarro = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la tarifa por hora para carros:"));
-        double tarifaMoto = Double
-                .parseDouble(JOptionPane.showInputDialog("Ingrese la tarifa por hora para motos clásicas:"));
-        double tarifaMotoHibrida = Double
-                .parseDouble(JOptionPane.showInputDialog("Ingrese la tarifa por hora para motos híbridas:"));
-        tarifas.put("Carro", tarifaCarro);
-        tarifas.put("Moto", tarifaMoto);
-        tarifas.put("MotoHibrida", tarifaMotoHibrida);
-        JOptionPane.showMessageDialog(null, "Tarifas configuradas correctamente.");
-        return tarifas;
+    public void configurarTarifas() {
+        tarifas.put("Carro", Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor por hora para Carro:")));
+        tarifas.put("Moto", Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor por hora para Moto:")));
+        tarifas.put("MotoHibrida", Double.parseDouble(JOptionPane.showInputDialog("Ingrese el valor por hora para Moto Hibrida:")));
+        JOptionPane.showMessageDialog(null, "Precios configurados correctamente.");
     }
-    public double getTarifa(Vehiculo vehiculo) {
-        return tarifas.getOrDefault(vehiculo, 0.0);
+    public void imprimirTarifas(Administrador admin) {
+        Map<String, Double> tarifas = admin.getTarifas();
+        System.out.println("Tarifas del parqueadero:");
+        tarifas.forEach((tipo, tarifa) -> {
+            System.out.println("Tipo de vehículo: " + tipo + " - Tarifa por hora: " + tarifa);
+        });
+    }
+   
+
+    public void calcularTotalPagar( ) {
+        String placa = JOptionPane.showInputDialog("Ingrese la placa del vehículo:");
+        Vehiculo vehiculo = registroVehiculos.get(placa);
+        if (vehiculo != null) {
+            LocalDateTime salida = LocalDateTime.now();
+            double tarifa=((Administrador) tarifas).getTarifa(placa);
+            System.out.println("llega aca 1");
+            Duration duracion = Duration.between(vehiculo.getHoraIngreso(), salida);
+            System.out.println(tarifa);
+            long horas = duracion.toHours();
+            if (duracion.toMinutesPart() > 0) {
+                System.out.println("llega aca 3");
+                horas++;
+            }
+            double totalPagar = horas * tarifa;
+            totalDiario += totalPagar;
+            totalMensual += totalPagar;
+            System.out.println("El total a pagar por el vehículo con placa " + placa + " es: " + totalPagar);
+        } else {
+            System.out.println("Vehículo con placa " + placa + " no encontrado.");
+        }
     }
 
-        public long get(String string) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'get'");
-        }
+    public double getTarifa(String tipoVehiculo) {
+        return tarifas.getOrDefault(tipoVehiculo, 0.0);
+    }
 
-        public long get(Vehiculo vehiculo) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'get'");
-        }
+    public Map<String, Double> getTarifas() {
+        return new HashMap<>(tarifas);
+    }
+
 
       
     
